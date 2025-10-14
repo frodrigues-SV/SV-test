@@ -123,7 +123,7 @@ def normalise(df_in: pd.DataFrame) -> pd.DataFrame:
     return out
 
 # ---------- Upload + parse ----------
-default_path = "test_probas.csv"
+default_path = "GUI/test/test_probas.csv"
 uploaded = st.file_uploader("Upload predictions (CSV/TSV)", type=["csv", "tsv", "txt"])
 
 if uploaded is not None:
