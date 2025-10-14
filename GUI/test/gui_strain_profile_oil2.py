@@ -123,12 +123,23 @@ def normalise(df_in: pd.DataFrame) -> pd.DataFrame:
     return out
 
 # ---------- Upload + parse ----------
-uploaded = st.file_uploader("Upload predictions (CSV/TSV)", type=["csv","tsv","txt"])
-if uploaded is None:
-    st.info("Upload a file to begin. Expected columns like: Alkanes, Aromatics, Biosurfactants.")
+default_path = "test_probas.csv"
+uploaded = st.file_uploader("Upload predictions (CSV/TSV)", type=["csv", "tsv", "txt"])
+
+if uploaded is not None:
+    raw = read_any_table(uploaded)
+else:
+    st.info("No file uploaded — using built-in demo data.")
+    raw = pd.read_csv(default_path)
+
+try:
+    df = normalise(raw)
+except Exception as e:
+    st.error(f"Parse error: {e}")
+    st.write("First rows for debugging:")
+    st.dataframe(raw.head(20), use_container_width=True, hide_index=True)
     st.stop()
 
-raw = read_any_table(uploaded)
 try:
     df = normalise(raw)
 except Exception as e:
