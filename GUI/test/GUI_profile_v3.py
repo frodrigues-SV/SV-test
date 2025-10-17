@@ -16,7 +16,7 @@ import streamlit as st
 # -------------------------
 st.set_page_config(page_title="Oil Mk2 – Strain Page", page_icon="🧫", layout="wide")
 
-DATA_PATH = Path(r"C:\Users\frodr\Documents\Strain Vaults\Notebooks\ML\Task_Models\tm_oil\DL\kfold\Mk2\runs\oil_hybrid_concat_v0_fold1\test_probas.csv")   # adjust if needed
+DATA_PATH = Path("GUI/test/test_probas.csv")   # adjust if needed
 IMAGES_DIR = Path("images")           # optional: images/<strain_id>.png|jpg|jpeg|webp
 
 CLASS_COLS = ["A_Alkanes", "C_Aromatics", "D_Biosurfactants"]
